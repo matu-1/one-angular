@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "matias",
+    "apellido": "flores",
+    "email": "matu@gmial.com",
+    "createdAt": "2020-05-05"
+  },
+  {
+    "id": 2,
+    "nombre": "Naruto",
+    "apellido": "Uzumaki",
+    "email": "naruto@gmial.com",
+    "createdAt": "2020-05-05"
+  },
+  {
+    "id": 3,
+    "nombre": "Luffy",
+    "apellido": "Monkey",
+    "email": "lufi@gmial.com",
+    "createdAt": "2020-05-05"
+  },
+  {
+    "id": 4,
+    "nombre": "Luffy",
+    "apellido": "Monkey",
+    "email": "lufi@gmial.com",
+    "createdAt": "2020-05-05"
+  }
+]
