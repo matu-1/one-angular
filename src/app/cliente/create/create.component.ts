@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../interfaces/cliente.interface';
+import { Cliente } from '../interfaces/cliente';
 import { ClienteService } from '../cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -40,11 +40,10 @@ export class CreateComponent implements OnInit {
   }
 
   create() {
-    console.log("se llamo crear");
     this.clieteService.create(this.cliente).subscribe((resp) => {
       Swal.fire(
         'Nuevo',
-        `El cliente ${resp.nombre} se creo correctamente!`,
+        `El cliente ${resp.data.nombre} se creo correctamente!`,
         'success'
       );
       this.router.navigate(['/cliente']);

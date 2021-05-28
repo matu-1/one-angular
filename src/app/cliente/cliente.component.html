@@ -22,7 +22,8 @@
             <td>{{ cliente.email }}</td>
             <td>{{ cliente.createdAt }}</td>
             <td>
-              <button class="btn btn-secondary" [routerLink]="['/cliente', cliente.id]" >Editar</button>
+              <button class="btn btn-secondary me-1" [routerLink]="['/cliente', cliente.id]" >Editar</button>
+              <button class="btn btn-danger" (click)="remove(cliente)" >Borrar</button>
             </td>
           </tr>
         </tbody>
