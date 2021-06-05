@@ -3,6 +3,7 @@ import { Cliente } from '../interfaces/cliente';
 import { ClienteService } from '../cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ErrorResponse } from '../interfaces/errorResponse';
 
 @Component({
   selector: 'app-create',
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 export class CreateComponent implements OnInit {
   title: string = 'Nuevo cliente';
   cliente: Cliente = {};
+  error!: ErrorResponse;
 
   constructor(
     private clieteService: ClienteService,
@@ -47,6 +49,9 @@ export class CreateComponent implements OnInit {
         'success'
       );
       this.router.navigate(['/cliente']);
+    }, err => {
+      console.log(err);
+      this.error = err.error.error;
     });
   }
 
@@ -59,5 +64,9 @@ export class CreateComponent implements OnInit {
       );
       this.router.navigate(['/cliente']);
     });
+  }
+
+  stringify(value: any){
+    return JSON.stringify(value, null, 3);
   }
 }

@@ -1,9 +1,16 @@
+
+<ul *ngIf="error" class="list-group mb-3">
+  <li *ngFor="let item of error | keyvalue" class="list-group-item list-group-item-danger">
+   <strong>{{  item.key + ": "}}</strong> {{ item.value }}
+  </li>
+</ul>
+
 <div class="card">
   <div class="card-header">
     {{ title }}
   </div>
   <div class="card-body">
-    <form (ngSubmit)="handleSubmit()">
+    <form #form="ngForm" (ngSubmit)="handleSubmit()">
       <div class="mb-3 row">
         <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
         <div class="col-sm-10">
@@ -13,7 +20,18 @@
             id="nombre"
             name="nombre"
             [(ngModel)]="cliente.nombre"
+            required
+            minlength="3"
+            #nombre="ngModel"
           />
+          <div class="alert alert-danger mt-1" role="alert" *ngIf="nombre.invalid && ( nombre.dirty || nombre.touched)">
+            <div *ngIf="nombre.errors?.required">
+              El nombre es obligatorio
+            </div>
+            <div *ngIf="nombre.errors?.minlength">
+              Minimo 3 caracteres
+            </div>
+          </div>
         </div>
       </div>
       <div class="mb-3 row">
@@ -25,7 +43,14 @@
             id="apellido"
             name="apellido"
             [(ngModel)]="cliente.apellido"
+            required
+            #apellido="ngModel"
           />
+          <div class="alert alert-danger mt-1" role="alert" *ngIf="apellido.invalid && ( apellido.dirty || apellido.touched)">
+            <div *ngIf="apellido.errors?.required">
+              El apellido es obligatorio
+            </div>
+          </div>
         </div>
       </div>
       <div class="mb-3 row">
@@ -37,12 +62,23 @@
             id="email"
             name="email"
             [(ngModel)]="cliente.email"
+            required
+            email
+            #email="ngModel"
           />
+          <div class="alert alert-danger mt-1" role="alert" *ngIf="email.invalid && ( email.dirty || email.touched)">
+            <div *ngIf="email.errors?.required">
+              El nombre es obligatorio
+            </div>
+            <div *ngIf="email.errors?.email">
+              El email no es valido
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
             {{ cliente.id ? "Editar" : "Registrar" }}
           </button>
         </div>

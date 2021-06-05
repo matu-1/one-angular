@@ -17,10 +17,10 @@
         <tbody>
           <tr *ngFor="let cliente of clientes">
             <td>{{ cliente.id }}</td>
-            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.nombre | uppercase}}</td>
             <td>{{ cliente.apellido }}</td>
             <td>{{ cliente.email }}</td>
-            <td>{{ cliente.createdAt }}</td>
+            <td>{{ cliente.createdAt | date: "fullDate"}}</td>
             <td>
               <button class="btn btn-secondary me-1" [routerLink]="['/cliente', cliente.id]" >Editar</button>
               <button class="btn btn-danger" (click)="remove(cliente)" >Borrar</button>

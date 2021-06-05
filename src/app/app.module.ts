@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -11,6 +11,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './cliente/create/create.component';
 import { FormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs, 'es');
 
 const routes: Routes = [
   { path: '', redirectTo: '/cliente', pathMatch: "full"},
@@ -35,7 +39,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
   ],
-  providers: [ClienteService],
+  providers: [ClienteService, { provide: LOCALE_ID, useValue: "es"}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

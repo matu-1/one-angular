@@ -37,6 +37,7 @@ export class ClienteService {
       })
       .pipe(
         catchError((e) => {
+          console.log(e);
           Swal.fire('Error al crear', e.error.message, 'error');
           return throwError(e);
         })
